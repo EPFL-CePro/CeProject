@@ -1,0 +1,319 @@
+class EnterpriseToken < ApplicationRecord
+  class << self
+    TRUE_FEATURES = %i[
+      allowed_action
+      baseline_comparison
+      board_view
+      calculated_values
+      conditional_highlighting
+      custom_actions
+      custom_field_hierarchies
+      customize_life_cycle
+      date_alerts
+      define_custom_style
+      edit_attribute_groups
+      forbidden_action
+      gantt_pdf_export
+      internal_comments
+      ldap_groups
+      nextcloud_sso
+      one_drive_sharepoint_file_storage
+      placeholder_users
+      readonly_work_packages
+      scim_api
+      sso_auth_providers
+      team_planner_view
+      time_entry_time_restrictions
+      virus_scanning
+      work_package_query_relation_columns
+      work_package_sharing
+      work_package_subject_generation
+    ].freeze
+
+    def current
+      self.new
+    end
+
+    def all_tokens
+      [self.new]
+    end
+
+    def active_tokens
+      [self.new]
+    end
+
+    def active_non_trial_tokens
+      [self.new]
+    end
+
+    def active_trial_tokens
+      []
+    end
+
+    def active_trial_token
+      nil
+    end
+
+    def allows_to?(feature)
+      true
+    end
+
+    def active?
+      true
+    end
+
+    def trial_only?
+      false
+    end
+
+    def available_features
+      TRUE_FEATURES
+    end
+
+    def non_trialling_features
+      TRUE_FEATURES
+    end
+
+    def trialling_features
+      []
+    end
+
+    def trialling?(feature)
+      false
+    end
+
+    def hide_banners?
+      true
+    end
+
+    def show_banners?
+      false
+    end
+
+    def user_limit
+      nil
+    end
+
+    def non_trial_user_limit
+      nil
+    end
+
+    def trial_user_limit
+      nil
+    end
+
+    def banner_type_for(feature:)
+      nil
+    end
+
+    def get_user_limit_of(tokens)
+      nil
+    end
+  end
+
+  FAR_FUTURE_DATE = Date.new(9999, 1, 1)
+
+  def token_object
+    Class.new do
+      def id
+        "lmao"
+      end
+
+      def has_feature?(feature)
+        true
+      end
+
+      def will_expire?
+        false
+      end
+
+      def mail
+        "admin@example.com"
+      end
+
+      def subscriber
+        "cepro-enterprise"
+      end
+
+      def company
+        "cepro"
+      end
+
+      def domain
+        "cepro.com"
+      end
+
+      def issued_at
+        Time.zone.today - 1
+      end
+
+      def starts_at
+        Time.zone.today - 1
+      end
+
+      def expires_at
+        Time.zone.today + 1
+      end
+
+      def reprieve_days
+        nil
+      end
+
+      def reprieve_days_left
+        69
+      end
+
+      def restrictions
+        nil
+      end
+
+      def available_features
+        EnterpriseToken.TRUE_FEATURES
+      end
+
+      def plan
+        "cepro_enterprise_plan"
+      end
+
+      def features
+        EnterpriseToken.TRUE_FEATURES
+      end
+      
+      def version
+        69
+      end
+
+      def started?
+        true
+      end
+
+      def trial?
+        false
+      end
+
+      def active?
+        true
+      end
+    end.new
+  end
+
+  def id
+    "lmao"
+  end
+
+  def encoded_token
+    "oaml"
+  end
+
+  def will_expire?
+    false
+  end
+
+  def mail
+    "admin@example.com"
+  end
+
+  def subscriber
+    "cepro-enterprise"
+  end
+
+  def company
+    "cepro"
+  end
+
+  def domain
+    "cepro.com"
+  end
+
+  def issued_at
+    Time.zone.today - 1
+  end
+
+  def starts_at
+    Time.zone.today - 1
+  end
+
+  def expires_at
+    Time.zone.today + 1
+  end
+
+  def reprieve_days
+    nil
+  end
+
+  def reprieve_days_left
+    69
+  end
+
+  def restrictions
+    nil
+  end
+
+  def available_features
+    EnterpriseToken.TRUE_FEATURES
+  end
+
+  def plan
+    "cepro_enterprise_plan"
+  end
+
+  def features
+    EnterpriseToken.TRUE_FEATURES
+  end
+  
+  def version
+    69
+  end
+
+  def started?
+    true
+  end
+
+  def trial?
+    false
+  end
+
+  def active?
+    true
+  end
+
+  def allows_to?(action)
+    true
+  end
+
+  def expiring_soon?
+    false
+  end
+
+  def in_grace_period?
+    false
+  end
+
+  def expired?(reprieve: true)
+    false
+  end
+
+  def statuses
+    []
+  end
+
+  def invalid_domain?
+    false
+  end
+
+  def unlimited_users?
+    true
+  end
+
+  def max_active_users
+    nil
+  end
+
+  def sort_key
+    [FAR_FUTURE_DATE, FAR_FUTURE_DATE]
+  end
+
+  def days_left
+    69
+  end
+end
