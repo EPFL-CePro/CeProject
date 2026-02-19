@@ -29,6 +29,15 @@ x-op-app: &app
     # set to true to enable the email receiving feature. See ./docker/cron for more options
     IMAP_ENABLED: "${IMAP_ENABLED:-false}"
     SECRET_KEY_BASE: "${SECRET_KEY_BASE:-OVERWRITE_ME}"
+    OPENPROJECT_MAIL__FROM: "${OPENPROJECT_MAIL__FROM:-openproject@example.net}"
+    EMAIL_DELIVERY_METHOD: "${EMAIL_DELIVERY_METHOD:-smtp}"
+    SMTP_ADDRESS: "${SMTP_ADDRESS:-emailserver.com}"
+    SMTP_PORT: "${SMTP_PORT:-587}"
+    SMTP_DOMAIN: "${SMTP_DOMAIN:-epfl.ch}"
+    SMTP_AUTHENTICATION: "${SMTP_AUTHENTICATION:-plain}"
+    SMTP_USER_NAME: "${SMTP_USER_NAME:-username}"
+    SMTP_PASSWORD: "${SMTP_PASSWORD:-password}"
+    SMTP_ENABLE_STARTTLS_AUTO: "${SMTP_ENABLE_STARTTLS_AUTO:-true}"
   volumes:
     - ./enterprise.rb:/app/app/models/enterprise_token.rb:ro
     - "${OPDATA:-opdata}:/var/openproject/assets"
