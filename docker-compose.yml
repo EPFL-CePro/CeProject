@@ -53,7 +53,7 @@ services:
                 chown -R 1000:1000 /var/openproject/assets"
 
   db:
-    image: postgres:13
+    image: postgres:17
     <<: *restart_policy
     stop_grace_period: "3s"
     volumes:
