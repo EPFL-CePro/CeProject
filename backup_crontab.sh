@@ -4,7 +4,7 @@ set -euo pipefail
 CONTAINER="ceproject-db-1"
 DB="openproject"
 USER="postgres"
-BACKUP_DIR="/data/backup/pg"
+BACKUP_DIR="/data/ceproject/NAS-backup"
 RETENTION_DAYS=7
 
 set -a
